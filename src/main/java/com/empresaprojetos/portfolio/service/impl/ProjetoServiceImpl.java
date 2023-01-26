@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProjetoServiceImpl implements ProjetoService {
@@ -20,5 +21,11 @@ public class ProjetoServiceImpl implements ProjetoService {
     @Override
     public Page<Projeto> findAll(Pageable pageable){
         return projetoRepository.findAll(pageable);
+    }
+
+    @Override
+    @Transactional
+    public Projeto create(Projeto projeto){
+        return projetoRepository.save(projeto);
     }
 }

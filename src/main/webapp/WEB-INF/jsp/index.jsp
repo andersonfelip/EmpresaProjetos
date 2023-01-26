@@ -37,7 +37,7 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <button type="submit" class="btn btn-primary">Search</button>
-                <a class="btn btn-primary" href="./create" role="button">Create</a>
+                <a class="btn btn-primary" href="./project" role="button">Create</a>
             </div>
         </div>
     </form>
@@ -61,21 +61,32 @@
         </thead>
         <tbody>
         <c:choose>
-            <c:when test="${list.size()==0}">
+            <c:when test="${listProjects.size()==0}">
                 <tr>
                     <td colspan="10">No data</td>
                 </tr>
             </c:when>
         </c:choose>
-        <c:forEach var="project" items="${list}">
+        <c:forEach var="project" items="${listProjects}">
             <tr>
                 <td><c:out value="${project.id}" /></td>
                 <td><c:out value="${project.nome}" /></td>
+                <td><c:out value="${project.dataInicio}" /></td>
+                <td><c:out value="${project.dataPrevisaoFim}" /></td>
+                <td><c:out value="${project.dataFim}" /></td>
+                <td><c:out value="${project.descricao}" /></td>
+                <td><c:out value="${project.status}" /></td>
+                <td><c:out value="${project.orcamento}" /></td>
+                <td><c:out value="${project.risco}" /></td>
+                <td><c:out value="${project.pessoaDto.nome}" /></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
 <script src="<c:url value="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/static/node_modules/jquery/dist/jquery.min.js"/>"></script>
+<script src="<c:url value="/static/project/project.js"/>"></script>
 </body>
 </html>
+

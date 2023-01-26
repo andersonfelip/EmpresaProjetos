@@ -34,7 +34,7 @@ spring:
 
 paging:
   page:
-    number: 1
+    number: 0
     size: 10
 
 
