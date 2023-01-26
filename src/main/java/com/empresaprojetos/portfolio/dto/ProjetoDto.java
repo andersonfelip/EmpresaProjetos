@@ -1,6 +1,7 @@
 package com.empresaprojetos.portfolio.dto;
 
 import com.empresaprojetos.portfolio.constants.Risk;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@JsonSerialize
 public class ProjetoDto {
 
     private long id;

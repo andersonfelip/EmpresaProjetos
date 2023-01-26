@@ -13,4 +13,6 @@ public interface PessoaSourcePessoaDtoMapper {
     PessoaDto map(Pessoa pessoa);
 
     List<PessoaDto> map(List<Pessoa> pessoaList);
+
+    List<Pessoa> mapDto(List<PessoaDto> pessoaDtoList);
 }

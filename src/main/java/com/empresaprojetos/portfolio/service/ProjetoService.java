@@ -6,10 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface ProjetoService {
+    Projeto findById(Long id);
+
     Page<Projeto> findAll(Pageable pageable);
 
     @Transactional
-    Projeto create(Projeto projeto);
+    Projeto save(Projeto projeto);
     @Transactional
     void delete(Long id);
 }

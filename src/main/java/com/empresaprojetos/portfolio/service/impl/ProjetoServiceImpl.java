@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class ProjetoServiceImpl implements ProjetoService {
     private final ProjetoRepository projetoRepository;
@@ -19,13 +21,18 @@ public class ProjetoServiceImpl implements ProjetoService {
     }
 
     @Override
+    public Projeto findById(Long id){
+        return Optional.of(projetoRepository.findById(id)).get().orElse(null);
+    }
+
+    @Override
     public Page<Projeto> findAll(Pageable pageable){
         return projetoRepository.findAll(pageable);
     }
 
     @Override
     @Transactional
-    public Projeto create(Projeto projeto){
+    public Projeto save(Projeto projeto){
         return projetoRepository.save(projeto);
     }
 

@@ -1,7 +1,6 @@
 package com.empresaprojetos.portfolio.controller;
 
 import com.empresaprojetos.portfolio.constants.Configuration;
-import com.empresaprojetos.portfolio.constants.Risk;
 import com.empresaprojetos.portfolio.domain.Pessoa;
 import com.empresaprojetos.portfolio.domain.Projeto;
 import com.empresaprojetos.portfolio.dto.PessoaDto;
@@ -73,7 +72,7 @@ public class ProjectController {
     @PostMapping("/project")
     public ModelAndView  create(@ModelAttribute("project") ProjetoDto projetoDto, ModelMap model, HttpServletRequest httpServletRequest) {
         Projeto projeto = mapperProjeto.map(projetoDto);
-        projetoService.create(projeto);
+        projetoService.save(projeto);
         return new ModelAndView("redirect:/", model);
     }
 
