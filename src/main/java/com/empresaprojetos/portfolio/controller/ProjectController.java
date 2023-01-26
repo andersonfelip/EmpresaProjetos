@@ -1,6 +1,7 @@
 package com.empresaprojetos.portfolio.controller;
 
 import com.empresaprojetos.portfolio.constants.Configuration;
+import com.empresaprojetos.portfolio.constants.Risk;
 import com.empresaprojetos.portfolio.domain.Pessoa;
 import com.empresaprojetos.portfolio.domain.Projeto;
 import com.empresaprojetos.portfolio.dto.PessoaDto;
@@ -15,12 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -74,7 +74,13 @@ public class ProjectController {
     public ModelAndView  create(@ModelAttribute("project") ProjetoDto projetoDto, ModelMap model, HttpServletRequest httpServletRequest) {
         Projeto projeto = mapperProjeto.map(projetoDto);
         projetoService.create(projeto);
-        return new ModelAndView("redirect:/?created=true", model);
+        return new ModelAndView("redirect:/", model);
+    }
+
+    @DeleteMapping("/project/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public void  delete(@PathVariable Long id, ModelMap model) {
+        projetoService.delete(id);
     }
 }
 

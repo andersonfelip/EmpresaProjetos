@@ -28,4 +28,10 @@ public class ProjetoServiceImpl implements ProjetoService {
     public Projeto create(Projeto projeto){
         return projetoRepository.save(projeto);
     }
+
+    @Override
+    @Transactional
+    public void delete(Long id){
+        projetoRepository.deleteById(id);
+    }
 }

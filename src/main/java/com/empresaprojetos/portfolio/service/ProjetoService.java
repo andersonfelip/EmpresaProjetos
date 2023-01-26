@@ -10,4 +10,6 @@ public interface ProjetoService {
 
     @Transactional
     Projeto create(Projeto projeto);
+    @Transactional
+    void delete(Long id);
 }

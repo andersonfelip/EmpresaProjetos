@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="com.empresaprojetos.portfolio.constants.Risk" %>
+<%@ page import="com.empresaprojetos.portfolio.constants.Status" %>
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -23,16 +25,6 @@
                 <input type="text" class="form-control" id="name" placeholder="Enter name">
                 <small id="nameHelp" class="form-text text-muted">Enter portfolio name.</small>
             </div>
-            <div class="form-group col-md-4">
-                <label for="startDate">Start Date</label>
-                <input type="date" class="form-control" id="startDate" placeholder="Enter Start Date">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="endForecast">End Forecast</label>
-                <input type="date" class="form-control" id="endForecast" placeholder="Enter End Forecast">
-            </div>
-
-
         </div>
         <div class="row">
             <div class="form-group col-md-12">
@@ -57,6 +49,7 @@
                 <th>Budget</th>
                 <th>Risk</th>
                 <th>Manager</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -75,10 +68,13 @@
                 <td><c:out value="${project.dataPrevisaoFim}" /></td>
                 <td><c:out value="${project.dataFim}" /></td>
                 <td><c:out value="${project.descricao}" /></td>
-                <td><c:out value="${project.status}" /></td>
+                <td><c:out value="${Status.findByName(project.status)}" /></td>
                 <td><c:out value="${project.orcamento}" /></td>
-                <td><c:out value="${project.risco}" /></td>
+                <td><c:out value="${Risk.findByName(project.risco).name()}" /></td>
                 <td><c:out value="${project.pessoaDto.nome}" /></td>
+                <td>
+                    <button class="btn btn-primary" onclick="deleteProject(${project.id})" role="button">Delete</button>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

@@ -2,6 +2,12 @@ function updateManager(manager){
     $('#idGerente').val(manager);
 }
 
-function created(){
-    $('#modalCreated').modal('show');
+function deleteProject(id){
+    $.ajax({
+        url: '/project/'+id,
+        type: 'DELETE',
+        success: function() {
+            location.reload();
+        }
+    });
 }
